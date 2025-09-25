@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
 
 class Calculator(QWidget):
     """
@@ -22,9 +22,22 @@ class Calculator(QWidget):
         # 창의 위치와 크기를 설정합니다. (x, y, 너비, 높이)
         # 화면의 x=300, y=300 위치에 300x400 크기의 창이 생성됩니다.
         self.setGeometry(300, 300, 300, 400)
-        
+
+        # '메시지 띄우기' 라는 텍스트를 가진 버튼을 생성합니다.
+        btn = QPushButton('메시지 띄우기', self)
+        # 버튼의 위치와 크기를 설정합니다.
+        btn.setGeometry(100, 175, 100, 50)
+        # 버튼을 클릭했을 때 self.showMessageBox 메서드가 호출되도록 연결합니다.
+        btn.clicked.connect(self.showMessageBox)
+
         # 위젯을 화면에 보여줍니다.
         self.show()
+
+    def showMessageBox(self):
+        """
+        메시지 박스를 화면에 표시하는 메서드
+        """
+        QMessageBox.information(self, '메시지', 'Button Clicker')
 
 if __name__ == '__main__':
     # QApplication: 프로그램을 실행하고 이벤트 루프를 관리하는 클래스
