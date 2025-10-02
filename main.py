@@ -26,9 +26,11 @@ class Calculator(QWidget):
         # 텍스트 에디터와 버튼을 인스턴스 변수로 생성합니다.
         self.text_edit = QTextEdit()
         btn = QPushButton('메시지 띄우기', self)
+        clear_btn = QPushButton('clear', self)
         
         # 버튼을 클릭했을 때 self.add_text 메서드가 호출되도록 연결합니다.
         btn.clicked.connect(self.add_text)
+        clear_btn.clicked.connect(self.clear_text)
 
         # 수직 레이아웃(QVBoxLayout)을 생성합니다.
         vbox = QVBoxLayout()
@@ -36,6 +38,7 @@ class Calculator(QWidget):
         vbox.addWidget(self.text_edit)
         # 버튼을 레이아웃에 추가합니다.
         vbox.addWidget(btn)
+        vbox.addWidget(clear_btn)
 
         # 생성한 레이아웃을 창의 기본 레이아웃으로 설정합니다.
         self.setLayout(vbox)
@@ -48,6 +51,12 @@ class Calculator(QWidget):
         버튼을 클릭할 때 텍스트 에디터에 'cliked'를 추가하는 메서드
         """
         self.text_edit.append('cliked')
+
+    def clear_text(self):
+        """
+        clear 버튼을 클릭할 때 텍스트 에디터의 내용을 모두 지우는 메서드
+        """
+        self.text_edit.clear()
 
 if __name__ == '__main__':
     # QApplication: 프로그램을 실행하고 이벤트 루프를 관리하는 클래스
