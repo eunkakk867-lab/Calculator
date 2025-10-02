@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QTextEdit, QVBoxLayout
 
 class Calculator(QWidget):
     """
@@ -23,21 +23,31 @@ class Calculator(QWidget):
         # 화면의 x=300, y=300 위치에 300x400 크기의 창이 생성됩니다.
         self.setGeometry(300, 300, 300, 400)
 
-        # '메시지 띄우기' 라는 텍스트를 가진 버튼을 생성합니다.
+        # 텍스트 에디터와 버튼을 인스턴스 변수로 생성합니다.
+        self.text_edit = QTextEdit()
         btn = QPushButton('메시지 띄우기', self)
-        # 버튼의 위치와 크기를 설정합니다.
-        btn.setGeometry(100, 175, 100, 50)
-        # 버튼을 클릭했을 때 self.showMessageBox 메서드가 호출되도록 연결합니다.
-        btn.clicked.connect(self.showMessageBox)
+        
+        # 버튼을 클릭했을 때 self.add_text 메서드가 호출되도록 연결합니다.
+        btn.clicked.connect(self.add_text)
+
+        # 수직 레이아웃(QVBoxLayout)을 생성합니다.
+        vbox = QVBoxLayout()
+        # 텍스트 에디터를 레이아웃에 추가합니다.
+        vbox.addWidget(self.text_edit)
+        # 버튼을 레이아웃에 추가합니다.
+        vbox.addWidget(btn)
+
+        # 생성한 레이아웃을 창의 기본 레이아웃으로 설정합니다.
+        self.setLayout(vbox)
 
         # 위젯을 화면에 보여줍니다.
         self.show()
 
-    def showMessageBox(self):
+    def add_text(self):
         """
-        메시지 박스를 화면에 표시하는 메서드
+        버튼을 클릭할 때 텍스트 에디터에 'cliked'를 추가하는 메서드
         """
-        QMessageBox.information(self, '메시지', 'Button Clicker')
+        self.text_edit.append('cliked')
 
 if __name__ == '__main__':
     # QApplication: 프로그램을 실행하고 이벤트 루프를 관리하는 클래스
