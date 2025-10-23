@@ -31,7 +31,7 @@ class AdditionApp(QWidget):
         self.num2_input.setStyleSheet("font-size: 16px; padding: 5px;")
 
         # 3. 더하기 버튼
-        self.add_button = QPushButton('더하기', self)
+        self.add_button = QPushButton('add', self)
         self.add_button.setStyleSheet("font-size: 18px; padding: 10px; background-color: #4CAF50; color: white; border-radius: 5px;")
         self.add_button.clicked.connect(self.add_numbers) # 버튼 클릭 시 add_numbers 메서드 호출
 
