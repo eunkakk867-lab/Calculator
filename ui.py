@@ -36,7 +36,7 @@ class AdditionApp(QWidget):
         self.add_button.clicked.connect(self.add_numbers) # 버튼 클릭 시 add_numbers 메서드 호출
 
         # 4. 결과 출력 레이블
-        self.result_label = QLabel('결과: ', self)
+        self.result_label = QLabel('resurt: ', self)
         self.result_label.setAlignment(Qt.AlignCenter) # 텍스트를 중앙 정렬
         self.result_label.setStyleSheet("font-size: 24px; font-weight: bold; color: #333;")
         self.result_label.setWordWrap(True) # 텍스트가 길어지면 줄 바꿈
@@ -70,7 +70,7 @@ class AdditionApp(QWidget):
             result = num1 + num2
 
             # 결과를 레이블에 표시
-            self.result_label.setText(f'결과: {result}')
+            self.result_label.setText(f'resurt: {result}')
             self.result_label.setStyleSheet("font-size: 24px; font-weight: bold; color: #333;") # 성공 시 색상 유지
         except ValueError:
             # 숫자로 변환할 수 없는 경우 오류 메시지 표시
